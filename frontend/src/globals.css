@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 17% 98%; /* F8F9FA - Fundo Claro */
+    --foreground: 240 85% 12%; /* 070638 - Texto Escuro */
+    
+    --card: 210 17% 98%; /* Mesmo do fundo claro */
+    --card-foreground: 240 85% 12%; /* Texto Escuro */
+
+    --popover: 210 17% 98%;
+    --popover-foreground: 240 85% 12%;
+
+    --primary: 244 83% 11%; /* 302F73 - Roxo Escuro */
+    --primary-foreground: 210 17% 98%; /* Branco */
+
+    --secondary: 240 20% 90%; /* Cinza claro derivado do fundo */
+    --secondary-foreground: 240 85% 12%; /* Texto escuro */
+
+    --muted: 240 20% 90%;
+    --muted-foreground: 244 30% 40%; /* Versão mais clara do roxo */
+
+    --accent: 244 43% 32%; /* 302F73 - Roxo Escuro */
+    --accent-foreground: 210 17% 98%; /* Branco */
+
+    --destructive: 0 95% 64%; /* FA5252 - Vermelho */
+    --destructive-foreground: 210 17% 98%; /* Branco */
+
+    --border: 240 20% 80%; /* Cinza intermediário */
+    --input: 240 20% 80%; /* Mesmo tom das bordas */
+    --ring: 240 85% 12%; /* Azul Escuro */
+
+    --chart-1: 0 95% 64%; /* FA5252 - Vermelho */
+    --chart-2: 135 64% 64%; /* 69DB7C - Verde */
+    --chart-3: 244 43% 32%; /* 302F73 - Roxo */
+    --chart-4: 240 85% 12%; /* 070638 - Azul Escuro */
+    --chart-5: 210 17% 98%; /* F8F9FA - Branco */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 85% 12%; /* 070638 - Azul Escuro */
+    --foreground: 210 17% 98%; /* F8F9FA - Branco */
+
+    --card: 240 85% 12%;
+    --card-foreground: 210 17% 98%;
+
+    --popover: 240 85% 12%;
+    --popover-foreground: 210 17% 98%;
+
+    --primary: 210 17% 98%; /* Branco */
+    --primary-foreground: 240 85% 12%; /* Azul Escuro */
+
+    --secondary: 244 43% 32%; /* 302F73 - Roxo Escuro */
+    --secondary-foreground: 210 17% 98%; /* Branco */
+
+    --muted: 244 43% 32%;
+    --muted-foreground: 210 17% 98%;
+
+    --accent: 244 43% 32%;
+    --accent-foreground: 210 17% 98%;
+
+    --destructive: 0 80% 50%; /* Vermelho escuro para modo escuro */
+    --destructive-foreground: 210 17% 98%;
+
+    --border: 244 43% 40%; /* Cinza escuro */
+    --input: 244 43% 40%;
+    --ring: 210 17% 98%; /* Branco */
+
+    --chart-1: 0 95% 64%; /* FA5252 - Vermelho */
+    --chart-2: 135 64% 64%; /* 69DB7C - Verde */
+    --chart-3: 244 43% 32%; /* 302F73 - Roxo */
+    --chart-4: 210 17% 98%; /* Branco */
+    --chart-5: 0 80% 50%; /* Vermelho mais escuro */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+}

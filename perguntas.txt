@@ -1,0 +1,86 @@
+🔝 1. Perfil populacional e distribuição
+Qual a distribuição de casos de tuberculose por faixa etária e sexo?
+
+Qual a distribuição de casos por raça/cor?
+
+Quais estados apresentam as maiores taxas de notificação de tuberculose?
+
+Qual é a forma clínica (pulmonar/extrapulmonar) mais prevalente por região/UF?
+
+Qual é a distribuição dos casos de tuberculose entre populações vulneráveis (PPL, população em situação de rua, imigrantes)?
+
+Há correlação entre raça/cor e forma clínica da tuberculose?
+
+A população com benefício de governo está mais suscetível à tuberculose?
+
+Qual a proporção de profissionais de saúde infectados por tuberculose?
+
+
+⚕️ 2. Co-infecções e comorbidades
+Qual a prevalência de HIV entre os casos notificados de tuberculose?
+
+Qual a taxa de coinfecção TB-HIV por estado ou região?
+
+Qual a proporção de casos de tuberculose entre pessoas com diabetes?
+
+Qual o impacto do alcoolismo, uso de drogas ilícitas e tabagismo nos casos de tuberculose?
+
+Qual a proporção de casos com comorbidades como doença mental ou outras doenças associadas?
+
+Quantos pacientes HIV+ fazem uso de antirretroviral no momento do diagnóstico de TB?
+
+
+🧪 3. Diagnóstico e exames
+Qual a proporção de casos com diagnóstico confirmado por raio-X, cultura de escarro ou teste molecular?
+
+Quantos pacientes apresentam resistência à Rifampicina e/ou Isoniazida?
+
+Quantos testes moleculares indicam resistência à Rifampicina?
+
+Em quantos casos não foi realizado o teste de sensibilidade?
+
+Quantos exames estão em andamento, não realizados ou inconclusivos?
+
+
+📉 4. Desfechos do tratamento
+Qual a taxa de cura por estado, faixa etária ou população vulnerável?
+
+Qual a taxa de abandono de tratamento (inclusive abandono primário)?
+
+Qual a taxa de óbito por tuberculose versus óbito por outras causas?
+
+Qual a taxa de mudança de esquema terapêutico?
+
+Há associação entre resistência medicamentosa e desfecho desfavorável?
+
+Pessoas com comorbidades ou coinfecções têm maior taxa de abandono ou óbito?
+
+
+🔄 5. Tipo de entrada no sistema
+Qual a proporção de casos novos, recidivas, reingressos e transferências?
+
+Qual o perfil (etário, social, geográfico) dos pacientes reincidentes?
+
+Qual o desfecho mais comum entre reingressos e recidivas?
+
+Casos "pós-óbito" estão relacionados a que tipo de falhas no diagnóstico?
+
+🔬 6. Forma extrapulmonar da tuberculose
+Qual a distribuição dos tipos de formas extrapulmonares (pleural, ganglionar, óssea etc.)?
+
+Há maior prevalência de formas extrapulmonares em pessoas com HIV ou outras comorbidades?
+
+
+📊 7. Comparações e correlações avançadas
+Há diferença significativa entre os desfechos por sexo ou faixa etária?
+
+Existe correlação entre uso de álcool/drogas e abandono de tratamento?
+
+Estados com maior percentual de testes diagnósticos apresentam melhores desfechos?
+
+Imigrantes têm maior taxa de coinfecção TB-HIV ou resistência a medicamentos?
+
+Pessoas em situação de rua têm maior prevalência de formas extrapulmonares ou coinfecções?
+
+Há relação entre não realização de exames e maior taxa de abandono/óbito?
+

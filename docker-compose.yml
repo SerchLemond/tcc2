@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  pgsql:
+    image: ankane/pgvector:latest
+    container_name: Postgres
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    volumes:
+      - ./volumes/pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_DATABASE}
+    restart: always
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    depends_on:
+      - pgsql
+    volumes:
+      - .:/app
+    environment:
+      DB_HOST: pgsql
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_DATABASE: ${DB_DATABASE}
+    ports:
+      - '8000:8000'
+    command: ["/app/docker-entrypoint.sh"]

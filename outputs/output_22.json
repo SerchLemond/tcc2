@@ -1,0 +1,137 @@
+[
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "27011 MACEIO"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "27013 PENEDO"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "29029 ITAPETINGA"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "23032 CARIRI"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "31030 BELO HORIZONTE"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "25022 JOAO PESSOA"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "26017 RECIFE"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "33018 RIO DE JANEIRO"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "43026 PORTO ALEGRE"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "43033 PELOTAS"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 2,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "35061 SAO PAULO"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Microrregião IBGE de notific": "35063 SANTOS"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Territ da Cidadania de resid": "104 Zona Sul do Estado - RS"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Territ da Cidadania de resid": "120 Zona da Mata Sul - PB"
+        }
+    },
+    {
+        "metric": "confirmed_cases",
+        "value": 1,
+        "dimensions": {
+            "year": "22",
+            "month": "13",
+            "Territ da Cidadania de resid": "131 Carirí - CE"
+        }
+    }
+]
