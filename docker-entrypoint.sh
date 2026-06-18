@@ -12,4 +12,4 @@ echo "Banco de dados pronto. Rodando migrações..."
 aerich upgrade
 
 echo "Iniciando servidor..."
-exec hypercorn run:app --bind 0.0.0.0:8000 --reload
+exec hypercorn run:app --bind 0.0.0.0:8080
