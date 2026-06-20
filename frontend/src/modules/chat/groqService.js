@@ -2,7 +2,7 @@
 // CONFIGURAÇÃO DA API
 // =============================================
 
-import datasusDados from "./datasusDados.json";
+import datasusDados from "datasusDados.json";
 
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 const GROQ_MODEL = "llama-3.3-70b-versatile";
