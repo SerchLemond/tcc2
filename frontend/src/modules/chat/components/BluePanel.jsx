@@ -68,9 +68,11 @@ function TextMessage({ sender, content }) {
 
 // =============================================
 // COMPONENTE PRINCIPAL
+// BluePanel agora é independente do chat principal —
+// seleciona os dados automaticamente do arquivo datasusDados.json
 // =============================================
 
-export default function BluePanel({ realData }) {
+export default function BluePanel() {
   const [entries, setEntries] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -79,7 +81,6 @@ export default function BluePanel({ realData }) {
   const [chartType, setChartType] = useState("auto");
   const bottomRef = useRef(null);
 
-  // reset manual — chamado pelo botão de limpar
   function resetChat() {
     setEntries([]);
     setIsFirstMessage(true);
@@ -122,8 +123,10 @@ export default function BluePanel({ realData }) {
     });
 
     try {
+      // na primeira mensagem, buildFirstPrompt seleciona os dados automaticamente
+      // nas demais, envia o último spec para ajuste
       const promptText = isFirstMessage
-        ? buildFirstPrompt(userText, realData, chartType)
+        ? buildFirstPrompt(userText, chartType)
         : buildAdjustPrompt(userText, lastSpec);
 
       const rawResponse = await callGroqAPI([
@@ -136,16 +139,8 @@ export default function BluePanel({ realData }) {
       removeLastSistema();
       setLastSpec(spec);
       setIsFirstMessage(false);
-
-      if (!realData) {
-        addEntry({
-          type: "text",
-          sender: "sistema",
-          content: "⚠️ Dados do DATASUS não disponíveis. Gráfico baseado no conhecimento do modelo — faça uma pergunta no chat principal para usar dados reais.",
-        });
-      }
-
       addEntry({ type: "chart", spec });
+
     } catch (error) {
       removeLastSistema();
       const msg =
@@ -161,18 +156,11 @@ export default function BluePanel({ realData }) {
   return (
     <div className="flex flex-col h-full overflow-hidden">
 
-      {/* indicador de dados + botão limpar */}
+      {/* indicador + botão limpar */}
       <div className="flex items-center justify-between mx-3 mt-3 gap-2">
-        {realData ? (
-          <div className="flex-1 px-3 py-2 bg-white/20 rounded-lg text-white text-xs">
-            ✅ {realData.length} registros do DATASUS disponíveis.
-          </div>
-        ) : (
-          <div className="flex-1 px-3 py-2 bg-white/10 rounded-lg text-white/70 text-xs">
-            ℹ️ Sem dados do DATASUS. Faça uma pergunta no chat principal primeiro.
-          </div>
-        )}
-        {/* botão limpar — sempre visível, desabilitado quando não há mensagens */}
+        <div className="flex-1 px-3 py-2 bg-white/20 rounded-lg text-white text-xs">
+          ✅ Dados reais do DATASUS disponíveis. Faça uma pergunta para gerar um gráfico.
+        </div>
         <button
           onClick={resetChat}
           disabled={loading || entries.length === 0}
@@ -184,7 +172,7 @@ export default function BluePanel({ realData }) {
         </button>
       </div>
 
-      {/* seletor de tipo de gráfico — horizontal */}
+      {/* seletor de tipo de gráfico */}
       <ChartTypeSelector
         selected={chartType}
         onChange={setChartType}

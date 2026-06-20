@@ -2,6 +2,8 @@
 // CONFIGURAÇÃO DA API
 // =============================================
 
+import datasusDados from "./datasusDados.json";
+
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 const GROQ_MODEL = "llama-3.3-70b-versatile";
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
@@ -17,6 +19,48 @@ export const CHART_OPTIONS = [
   { value: "heatmap",     label: "Heatmap" },
   { value: "auto",        label: "Automático" },
 ];
+
+// =============================================
+// SELEÇÃO AUTOMÁTICA DE DADOS POR PERGUNTA
+// Detecta qual dataset usar baseado em palavras-chave
+// =============================================
+
+export function selectDataForQuestion(userQuestion) {
+  const q = userQuestion.toLowerCase();
+
+  // Pergunta 1: distribuição por sexo e ano
+  if (
+    q.includes("sexo") || q.includes("gênero") || q.includes("genero") ||
+    q.includes("masculino") || q.includes("feminino") ||
+    (q.includes("2021") || q.includes("2022") || q.includes("2023"))
+  ) {
+    return datasusDados.casosPorSexoAno;
+  }
+
+  // Pergunta 2: tipos de entrada (caso novo, recidiva, etc.)
+  if (
+    q.includes("tipo de entrada") || q.includes("caso novo") ||
+    q.includes("recidiva") || q.includes("reingresso") ||
+    q.includes("transferência") || q.includes("transferencia") ||
+    q.includes("proporção") || q.includes("proporcao") ||
+    q.includes("casos novos")
+  ) {
+    return datasusDados.casosPorTipoEntrada;
+  }
+
+  // Pergunta 3: formas extrapulmonares por faixa etária
+  if (
+    q.includes("extrapulmonar") || q.includes("faixa etária") ||
+    q.includes("faixa etaria") || q.includes("pleural") ||
+    q.includes("ganglionar") || q.includes("óssea") || q.includes("ossea") ||
+    q.includes("correlação") || q.includes("correlacao") ||
+    q.includes("forma") || q.includes("idade")
+  ) {
+    return datasusDados.formasExtrapulmonaresPorFaixaEtaria;
+  }
+
+  return null;
+}
 
 // =============================================
 // CHAMADA GENÉRICA À API (com retry e backoff)
@@ -66,23 +110,16 @@ export async function callGroqAPI(messages, attempt = 1) {
 
 // =============================================
 // CONVERSÃO DOS DADOS DO BACK-END
-// Transforma o json_plot do Thiago em tabela plana
 // =============================================
 
 export function convertJsonPlotToTable(jsonPlot) {
   try {
     if (!jsonPlot?.visualizacoes?.length) return null;
-
     const best = jsonPlot.visualizacoes.reduce((a, b) =>
       b.score > a.score ? b : a
     );
-
     if (!best?.dados?.length) return null;
-
-    return best.dados.map((d) => ({
-      ...d.dimensoes,
-      valor: d.valor,
-    }));
+    return best.dados.map((d) => ({ ...d.dimensoes, valor: d.valor }));
   } catch {
     return null;
   }
@@ -103,8 +140,7 @@ Barras do mesmo grupo ficam adjacentes, separadas por cor.`,
 
   pie: `Gere um GRÁFICO DE SETORES / PIZZA (mark: "arc").
 Use para mostrar proporções de uma variável categórica em relação ao total.
-Use "theta" para o valor numérico e "color" para a categoria.
-Evite usar quando houver muitas categorias (mais de 6).`,
+Use "theta" para o valor numérico e "color" para a categoria.`,
 
   heatmap: `Gere um HEATMAP (mark: "rect" com cor quantitativa).
 Use para mostrar intensidade entre duas dimensões categóricas.
@@ -118,15 +154,17 @@ o tipo de gráfico mais adequado entre: linhas, barras agrupadas, gráfico de se
 // PROMPT — PRIMEIRA MENSAGEM
 // =============================================
 
-export function buildFirstPrompt(userQuestion, tableData, chartType = "auto") {
+export function buildFirstPrompt(userQuestion, chartType = "auto") {
   const chartInstruction = CHART_TYPE_INSTRUCTIONS[chartType] || CHART_TYPE_INSTRUCTIONS.auto;
 
-  const dataSection = tableData
-    ? `DADOS REAIS DO DATASUS — copie-os exatamente no campo "data": {"values": [...]}, sem alterar nenhum valor:
-${JSON.stringify(tableData, null, 2)}`
-    : `Não há dados reais disponíveis no momento. Use seu conhecimento consolidado sobre tuberculose no Brasil
-(perfil epidemiológico, dados do Ministério da Saúde, boletins oficiais) para gerar valores estimados plausíveis.
-Inclua no título do gráfico o sufixo " (estimativa baseada no modelo)".`;
+  // seleciona automaticamente os dados relevantes para a pergunta
+  const dados = selectDataForQuestion(userQuestion);
+
+  const dataSection = dados
+    ? `DADOS REAIS DO DATASUS — copie-os exatamente no campo "data": {"values": [...]}, sem alterar nenhum valor numérico:
+${JSON.stringify(dados, null, 2)}`
+    : `Não há dados específicos disponíveis para esta pergunta. Use seu conhecimento consolidado sobre tuberculose no Brasil para gerar valores estimados plausíveis.
+Inclua no título o sufixo " (estimativa baseada no modelo)".`;
 
   return `Você é um especialista em visualização de dados epidemiológicos sobre tuberculose no Brasil.
 
